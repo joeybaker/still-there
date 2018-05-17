@@ -15,6 +15,7 @@ RUN yarn install --production
 RUN mkdir -p ./dist
 # Bundle app source
 COPY dist ./dist
+COPY .env .env
 
 EXPOSE 7000
 CMD [ "yarn", "start:server:prod" ]
