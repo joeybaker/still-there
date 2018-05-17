@@ -13,7 +13,7 @@ RUN yarn --production --prefer-offline
 # RUN npm install --only=production
 
 # Bundle app source
-COPY dist .
+COPY dist ./dist
 
 EXPOSE 7000
 CMD [ "yarn", "start:server:prod" ]
