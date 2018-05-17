@@ -14,7 +14,7 @@
     "watch": "f() { babel-watch src/$1 | bunyan; }; f",
     "watch:server": "yarn watch server/index.js",
     "watch:client": "yarn watch client/index.js",
-    "postinstall": "flow-typed install --override"
+    "postinstall": "[ $NODE_ENV != 'production' ] && flow-typed install --override || echo \"NODE_ENV=$NODE_ENV skipping flow-typed install\""
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
