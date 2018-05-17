@@ -94,10 +94,10 @@ const server = createServer((req, res) => {
   }
 
   cache[clientName] = {
-    timeout: setTimeout(
-      () => pingPushoverWithDown({ clientName }),
-      alertDuration,
-    ),
+    timeout: setTimeout(() => {
+      cache[clientName].isDown = true
+      pingPushoverWithDown({ clientName })
+    }, alertDuration),
     timestamp,
     clientName,
     isDown: false,
