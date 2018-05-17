@@ -8,10 +8,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "NOTE:build": "first arg is the dir to build, second is any args e.g. --watch",
-    "build": "f() { yarn babel src/$1 --out-dir dist/$1 --copy-files $2; }; f",
-    "watch": "f() { concurrently \"yarn build $1 --watch\" \"nodemon dist/$1 -w dist/$1 | yarn bunyan\" --raw --kill-others; }; f",
-    "watch:server": "yarn watch server",
+    "build": "f() { babel src --out-dir dist --copy-files; }; f",
+    "watch": "f() { babel-watch src/$1 | bunyan; }; f",
+    "watch:server": "yarn watch server/index.js",
+    "watch:client": "yarn watch client/index.js",
     "postinstall": "flow-typed install --override"
   },
   "devDependencies": {
@@ -43,6 +43,7 @@
   "dependencies": {
     "bunyan": "^1.8.12",
     "dotenv": "^5.0.1",
+    "got": "^8.3.1",
     "pushover-notifications": "^1.0.0"
   }
 }

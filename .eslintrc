@@ -19,6 +19,7 @@
     "import/extensions": [1, "ignorePackages"],
     "import/first": false,
     "global-require": 0,
+    "no-plusplus": 0,
     "flowtype/require-valid-file-annotation": [ 2, "always" ],
     "react/jsx-filename-extension": false,
   }
