@@ -10,7 +10,7 @@
   "scripts": {
     "start:server:prod": "node dist/server/index.js",
     "start:client:prod": "node dist/client/index.js",
-    "build": "f() { babel src --out-dir dist --copy-files; }; f",
+    "build": "f() { yarn babel src --out-dir dist --copy-files; }; f",
     "watch": "f() { babel-watch src/$1 | bunyan; }; f",
     "watch:server": "yarn watch server/index.js",
     "watch:client": "yarn watch client/index.js",
