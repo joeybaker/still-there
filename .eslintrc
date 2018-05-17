@@ -1,0 +1,25 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "node": true
+  },
+  "plugins": [
+    "flowtype",
+    "prettier"
+  ],
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/flowtype",
+    "prettier/react",
+    "plugin:prettier/recommended",
+    "plugin:flowtype/recommended"
+  ],
+  "rules": {
+    "import/extensions": [1, "ignorePackages"],
+    "import/first": false,
+    "global-require": 0,
+    "flowtype/require-valid-file-annotation": [ 2, "always" ],
+    "react/jsx-filename-extension": false,
+  }
+}

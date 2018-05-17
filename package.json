@@ -1,0 +1,48 @@
+{
+  "name": "still-there",
+  "version": "1.0.0",
+  "description": "Client and Server hearbeat that will ping pushover if a hearbeat is missed.",
+  "main": "dist/index.js",
+  "repository": "git@github.com:joeybaker/still-there.git",
+  "author": "Joey Baker <joey@byjoeybaker.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "NOTE:build": "first arg is the dir to build, second is any args e.g. --watch",
+    "build": "f() { yarn babel src/$1 --out-dir dist/$1 --copy-files $2; }; f",
+    "watch": "f() { concurrently \"yarn build $1 --watch\" \"nodemon dist/$1 -w dist/$1 | yarn bunyan\" --raw --kill-others; }; f",
+    "watch:server": "yarn watch server",
+    "postinstall": "flow-typed install --override"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-watch": "^2.0.7",
+    "concurrently": "^3.5.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "flow-bin": "^0.69.0",
+    "flow-typed": "^2.4.0",
+    "nodemon": "^1.17.3",
+    "prettier": "^1.11.1"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "dotenv": "^5.0.1",
+    "pushover-notifications": "^1.0.0"
+  }
+}
