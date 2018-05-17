@@ -47,5 +47,8 @@
     "dotenv": "^5.0.1",
     "got": "^8.3.1",
     "pushover-notifications": "^1.0.0"
+  },
+  "optionalDependencies": {
+    "pm2": "^2.10.4"
   }
 }
