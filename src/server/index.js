@@ -79,6 +79,12 @@ const server = createServer((req, res) => {
   const { url } = req
   const timestamp = new Date().toISOString()
   const clientName = url.replace('/', '')
+  if (!clientName) {
+    log.info('Request recieved with no url so no client name found', req)
+    res.end()
+    return
+  }
+
   const last = cache[clientName]
   log.info('recieved ping', { clientName })
 
