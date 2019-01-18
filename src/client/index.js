@@ -15,6 +15,7 @@ const {
   CLIENT_NAME,
   PUSHOVER_USER,
   PUSHOVER_TOKEN,
+  SECRET,
 } = process.env
 const pingInterval = parseInt(PING_INTERVAL, 10)
 
@@ -30,7 +31,7 @@ let serverDownCount = 0
 
 const ping = async () => {
   try {
-    await got(`${SERVER_URL}/${CLIENT_NAME}`)
+    await got(`${SERVER_URL}/${CLIENT_NAME}?secret=${SECRET || ''}`)
     serverDownCount = 0
     log.info('sent ping', { clientName: CLIENT_NAME })
   } catch (e) {

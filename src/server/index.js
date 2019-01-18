@@ -26,6 +26,7 @@ const {
   PUSHOVER_USER,
   PUSHOVER_TOKEN,
   NODE_ENV,
+  SECRET,
 } = process.env
 const isDev = NODE_ENV === 'development'
 const port = parseInt(PORT, 10)
@@ -78,7 +79,15 @@ const pingPushoverWithUp = ({
 const server = createServer((req, res) => {
   const { url } = req
   const timestamp = new Date().toISOString()
-  const clientName = url.replace('/', '')
+
+  const hasSecret = SECRET && url.includes(`secret=${SECRET}`)
+  if (!hasSecret) {
+    log.info('Request received without secret', req)
+    res.end()
+    return
+  }
+
+  const clientName = url.replace('/', '').replace(/\?.*$/, '')
   if (!clientName) {
     log.info('Request recieved with no url so no client name found', req)
     res.end()
